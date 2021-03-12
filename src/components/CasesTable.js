@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from "@material-ui/core";
+import { Card, CardContent, CardHeader, makeStyles } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
 
 const columns = [
@@ -29,12 +29,22 @@ const data = [
   { id: 13, name: "United States", totalCases: 100000 },
   { id: 14, name: "United States", totalCases: 100000 },
 ];
+
+const useClasses = makeStyles((theme) => ({
+  gridContainer: {
+    width: "100%",
+    height: 800,
+  },
+}));
+
 export default function CasesTable() {
+  const classes = useClasses();
+
   return (
     <Card>
       <CardHeader title={"Cases by Country"} />
       <CardContent>
-        <div style={{ width: "100%", height: 800 }}>
+        <div className={classes.gridContainer}>
           <DataGrid columns={columns} rows={data} />
         </div>
       </CardContent>
